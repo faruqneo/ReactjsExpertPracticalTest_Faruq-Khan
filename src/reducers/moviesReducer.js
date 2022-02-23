@@ -30,6 +30,7 @@ const reducer = (state = initialState, action) => {
                   .toLowerCase()
                   .includes(action.payload.toLowerCase()) ||
                 item.rating === parseInt(action.payload) ||
+                item.taglines.includes(action.payload) ||
                 item.genres.includes(action.payload)
             )
           : [],
