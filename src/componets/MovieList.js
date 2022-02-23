@@ -10,7 +10,6 @@ import MovieModal from "./MovieModal";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
-import { dummyList } from "../moviesList";
 
 const MovieList = ({ itemData, changePage }) => {
   const [isOpen, setIsOpen] = React.useState(false);
