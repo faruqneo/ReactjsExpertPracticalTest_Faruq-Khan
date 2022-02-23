@@ -17,7 +17,6 @@ const BannerPreviewer = ({ item, changePage }) => {
       <Container>
         <Box
           onClick={() => changePage(item?.id)}
-          // onClick={() => changePage(item?.id)}
           sx={{
             bgcolor: "#cfe8fc",
             height: "50vh",

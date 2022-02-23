@@ -1,7 +1,5 @@
 import React, { lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-// import MovieHome from "./componets/MovieHome";
-// import MovieDetails from "./componets/MovieDetails";
 const MovieHome = lazy(() => import("./componets/MovieHome"));
 const MovieDetails = lazy(() => import("./componets/MovieDetails"));
 

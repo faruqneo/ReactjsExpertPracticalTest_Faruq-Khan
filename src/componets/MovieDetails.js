@@ -11,7 +11,6 @@ import { push } from "connected-react-router";
 import { withRouter } from "react-router-dom";
 
 const MovieDetails = ({ info, changePage }) => {
-  // console.log(info);
   const [isOpen, setIsOpen] = React.useState(false);
   const handleOpenClose = () => setIsOpen(!isOpen);
 
