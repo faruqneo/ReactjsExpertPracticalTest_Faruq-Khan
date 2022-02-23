@@ -26,7 +26,7 @@ const MovieHome = ({ movies, genres, fetchList, filter, isFilter }) => {
   return (
     <>
       <Carousel>
-        {moviesList.slice(4, 8).map((ele, i) => (
+        {moviesList?.slice(4, 8).map((ele, i) => (
           <BannerPreviewer key={i} item={ele} />
         ))}
       </Carousel>

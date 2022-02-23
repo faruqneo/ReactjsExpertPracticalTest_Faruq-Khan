@@ -10,6 +10,7 @@ import MovieModal from "./MovieModal";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import { dummyList } from "../moviesList";
 
 const MovieList = ({ itemData, changePage }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -27,27 +28,31 @@ const MovieList = ({ itemData, changePage }) => {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {itemData.map((item) => (
-            <Card sx={{ maxWidth: 345 }} key={item.id}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={`${item.posterUrl}?w=248&fit=crop&auto=format`}
-                  alt="green iguana"
-                  onClick={() => handleOpenClose(item)}
-                />
-                <CardContent onClick={() => changePage(item.id)}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.plot}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
+          {itemData && itemData.length ? (
+            itemData.map((item) => (
+              <Card sx={{ maxWidth: 345 }} key={item.id}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={`${item.posterUrl}?w=248&fit=crop&auto=format`}
+                    alt="green iguana"
+                    onClick={() => handleOpenClose(item)}
+                  />
+                  <CardContent onClick={() => changePage(item.id)}>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {item.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {item.plot}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ))
+          ) : (
+            <></>
+          )}
         </Grid>
       </Box>
       {isOpen && (

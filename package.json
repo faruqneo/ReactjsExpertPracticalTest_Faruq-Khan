@@ -21,6 +21,7 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.4.1",
     "uuid": "^8.3.2",
     "video.js": "^7.17.0",
@@ -32,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -60,6 +61,31 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-jest": "^27.5.1",
     "enzyme": "^3.11.0",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "react-test-renderer": "^17.0.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
+      "^[./a-zA-Z0-9$_-]+\\.png$": "RelativeImageStub",
+      "^.+\\.(css|less)$": "<rootDir>/config/CSSStub.js"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "verbose": true,
+    "modulePathIgnorePatterns": [
+      "rpmbuild"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react/",
+      "<rootDir>/node_modules/react-dom/",
+      "<rootDir>/node_modules/react-addons-test-utils/",
+      "<rootDir>/node_modules/fbjs",
+      "<rootDir>/node_modules/core-js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
   }
 }
