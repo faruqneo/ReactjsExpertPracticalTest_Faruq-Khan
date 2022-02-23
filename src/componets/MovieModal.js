@@ -20,14 +20,6 @@ const style = {
 const MovieModal = ({ handleOpenClose, open, details }) => {
   return (
     <div>
-      {/* <IconButton
-        aria-label="close"
-        color="inherit"
-        size="small"
-        onClick={handleOpenClose}
-      >
-        <CloseIcon fontSize="inherit" />
-      </IconButton> */}
       <Modal
         open={open}
         onClose={handleOpenClose}
@@ -35,7 +27,7 @@ const MovieModal = ({ handleOpenClose, open, details }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <img src={details?.posterUrl} width={900} height={300} />
+          <img alt={details?.title} src={details?.posterUrl} width={900} height={300} />
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {details?.title}
           </Typography>
