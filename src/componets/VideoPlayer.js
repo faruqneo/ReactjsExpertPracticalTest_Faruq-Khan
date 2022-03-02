@@ -4,12 +4,12 @@ import 'videojs-youtube'
 import 'video.js/dist/video-js.css';
 
 const VideoPlayer = (props) => {
-  let videoNode = useRef();
+  let videoNode = useRef(null);
   let player = null;
 
   useEffect(() => {
     // instantiate video.js
-    player = videojs(videoNode.current, props, function onPlayerReady() {
+    player = videojs(videoNode, props, function onPlayerReady() {
       console.log('onPlayerReady');
     });
 
@@ -24,7 +24,7 @@ const VideoPlayer = (props) => {
   // see https://github.com/videojs/video.js/pull/3856
   return (
     <div data-vjs-player>
-      <video ref={node => (videoNode = node)} className="video-js" />
+      <video ref={node => (videoNode = node)} className="video-js" id={props.id} />
     </div>
   );
 }

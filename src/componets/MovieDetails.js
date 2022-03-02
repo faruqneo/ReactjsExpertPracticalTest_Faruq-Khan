@@ -25,6 +25,7 @@ const MovieDetails = ({ match }) => {
   ))
   // console.log("info", info);
   const videoJsOptions = {
+    id: `unique${info?.id}`,
     controls: false,
     width: 820,
     height: 700,

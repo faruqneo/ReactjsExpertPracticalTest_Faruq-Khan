@@ -6,7 +6,7 @@ import MovieList from "./MovieList";
 import SearchList from "./SearchList";
 import { fetchList } from "../actions";
 
-const MovieHome = ({ genres }) => {
+const MovieHome = () => {
   const { movies, filter, isFilter } = useSelector(({ moviesReducer }) => moviesReducer)
 
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const MovieHome = ({ genres }) => {
 
   useEffect(() => {
     setMoviesList(movies);
-  }, [movies, genres]);
+  }, [movies]);
 
   useEffect(() => {
     setFilters(filter);

@@ -28,6 +28,7 @@ const MovieModal = ({
   src,
 }) => {
   const videoJsOptions = {
+    id: `new${uniqueId}`,
     controls: true,
     width: 820,
     height: 700,

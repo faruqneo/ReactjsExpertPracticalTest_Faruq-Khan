@@ -7,7 +7,7 @@ import MovieHome from "../componets/MovieHome";
 import thunk from "redux-thunk";
 
 const mockStore = configureMockStore([thunk]);
-const store = mockStore({});
+const store = mockStore({ moviesReducer: { movies: [], filter: [], isFilter: false } });
 
 test("MoviesHome page should open properly", () => {
   const component = renderer.create(
