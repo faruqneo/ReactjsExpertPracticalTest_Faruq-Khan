@@ -9,6 +9,7 @@ const VideoPlayer = (props) => {
 
   useEffect(() => {
     // instantiate video.js
+    // eslint-disable-next-line
     player = videojs(videoNode, props, function onPlayerReady() {
       console.log('onPlayerReady');
     });

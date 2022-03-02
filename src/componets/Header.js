@@ -57,7 +57,7 @@ const Header = () => {
   const handleChange = ({ target }) => {
     dispatch(fetchFilterList(target.value));
   };
-
+// eslint-disable-next-line
   const changePage = () => dispatch(push(`/`));
 
   return (

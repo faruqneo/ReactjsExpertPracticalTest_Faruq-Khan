@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn cache clean && react-scripts build",
+    "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
   },

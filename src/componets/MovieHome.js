@@ -15,6 +15,7 @@ const MovieHome = () => {
 
   useEffect(() => {
     if (!isFilter) dispatch(fetchList());
+    // eslint-disable-next-line
   }, [isFilter]);
 
   useEffect(() => {
