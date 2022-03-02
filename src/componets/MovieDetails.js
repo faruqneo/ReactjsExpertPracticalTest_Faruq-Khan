@@ -10,19 +10,19 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-// import ListSubheader from "@mui/material/ListSubheader";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import MovieModal from "./MovieModal";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
 import { push } from "connected-react-router";
-import { fetchList } from "../actions";
 import { withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 import Videojs from "./VideoPlayer";
 
-const MovieDetails = ({ info, changePage }) => {
+const MovieDetails = ({ match }) => {
+  const info = useSelector(({ moviesReducer }) => moviesReducer.movies.find(
+    (item) => item.id === parseInt(match?.params?.id)
+  ))
   // console.log("info", info);
   const videoJsOptions = {
     controls: false,
@@ -51,6 +51,9 @@ const MovieDetails = ({ info, changePage }) => {
 
   const [videoSrc, setVideoSrc] = React.useState("");
   const [imageSrc, setImageSrc] = React.useState("");
+  const dispatch = useDispatch();
+
+  const changePage = () => dispatch(push(`/`));
 
   const handleOpenClose = () => setIsOpen(!isOpen);
 
@@ -185,18 +188,4 @@ const MovieDetails = ({ info, changePage }) => {
   );
 };
 
-const mapStateToProps = ({ moviesReducer }, { match }) => {
-  return {
-    info: moviesReducer?.movies.find(
-      (item) => item.id === parseInt(match?.params?.id)
-    ),
-  };
-};
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ fetchList, changePage: () => push(`/`) }, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(MovieDetails));
+export default withRouter(MovieDetails);

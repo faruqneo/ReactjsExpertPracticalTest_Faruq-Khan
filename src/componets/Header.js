@@ -7,8 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { useDispatch } from 'react-redux'
 import { push } from "connected-react-router";
 import { fetchFilterList } from "../actions";
 
@@ -53,10 +52,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Header = ({ fetchFilterList, changePage }) => {
+const Header = () => {
+  const dispatch = useDispatch();
   const handleChange = ({ target }) => {
-    fetchFilterList(target.value);
+    dispatch(fetchFilterList(target.value));
   };
+
+  const changePage = () => dispatch(push(`/`));
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -103,13 +105,4 @@ const Header = ({ fetchFilterList, changePage }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      changePage: () => push(`/`),
-      fetchFilterList,
-    },
-    dispatch
-  );
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

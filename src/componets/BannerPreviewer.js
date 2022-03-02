@@ -2,11 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import MovieModal from "./MovieModal";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { useDispatch } from 'react-redux'
 import { push } from "connected-react-router";
 
-const BannerPreviewer = ({ item, changePage }) => {
+const BannerPreviewer = ({ item }) => {
+  const dispatch = useDispatch();
+  const changePage = (id) => dispatch(push(`/movieInfo/${id}`));
   const [isOpen, setIsOpen] = React.useState(false);
   const handleOpenClose = () => {
     setIsOpen(!isOpen);
@@ -38,12 +39,4 @@ const BannerPreviewer = ({ item, changePage }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      changePage: (id) => push(`/movieInfo/${id}`),
-    },
-    dispatch
-  );
-
-export default connect(null, mapDispatchToProps)(BannerPreviewer);
+export default BannerPreviewer;

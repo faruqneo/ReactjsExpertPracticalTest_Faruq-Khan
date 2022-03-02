@@ -7,11 +7,12 @@ import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MovieModal from "./MovieModal";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 
-const SearchList = ({ itemData, changePage }) => {
+const SearchList = ({ itemData }) => {
+  const dispatch = useDispatch();
+  const changePage = (id) => dispatch(push(`/movieInfo/${id}`));
   const [isOpen, setIsOpen] = React.useState(false);
   const [data, setData] = React.useState(null);
   const handleOpenClose = (item) => {
@@ -61,12 +62,5 @@ const SearchList = ({ itemData, changePage }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      changePage: (id) => push(`/movieInfo/${id}`),
-    },
-    dispatch
-  );
 
-export default connect(null, mapDispatchToProps)(SearchList);
+export default SearchList;

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux'
 import Carousel from "react-material-ui-carousel";
 import BannerPreviewer from "./BannerPreviewer";
 import MovieList from "./MovieList";
 import SearchList from "./SearchList";
 import { fetchList } from "../actions";
-import { bindActionCreators } from "redux";
 
-const MovieHome = ({ movies, genres, fetchList, filter, isFilter }) => {
+const MovieHome = ({ genres }) => {
+  const { movies, filter, isFilter } = useSelector(({ moviesReducer }) => moviesReducer)
+
+  const dispatch = useDispatch();
   const [moviesList, setMoviesList] = useState([]);
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
-    if (!isFilter) fetchList();
-  }, [isFilter, fetchList]);
+    if (!isFilter) dispatch(fetchList());
+  }, [isFilter]);
 
   useEffect(() => {
     setMoviesList(movies);
@@ -39,18 +41,4 @@ const MovieHome = ({ movies, genres, fetchList, filter, isFilter }) => {
   );
 };
 
-const mapStateToProps = ({ moviesReducer }) => ({
-  movies: moviesReducer?.movies,
-  filter: moviesReducer?.filter,
-  isFilter: moviesReducer?.isFilter
-});
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      fetchList,
-    },
-    dispatch
-  );
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieHome);
+export default MovieHome;
