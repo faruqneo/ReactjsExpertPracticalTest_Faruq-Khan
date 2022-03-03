@@ -1,7 +1,7 @@
 import { dummyList } from "../moviesList";
 import { MOVIES_LIST, FILTER_LIST, CLEAR_FILTER } from "../type";
 
-const initialState = {
+export const initialState = {
   movies: [],
   filter: [],
   isFilter: false,

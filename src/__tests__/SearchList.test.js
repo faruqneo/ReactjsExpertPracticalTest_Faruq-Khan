@@ -6,9 +6,10 @@ import configureMockStore from "redux-mock-store";
 import SearchList from "../componets/SearchList";
 import thunk from "redux-thunk";
 import { dummyList } from "../moviesList";
+import { initialState } from "../reducers/moviesReducer";
 
 const mockStore = configureMockStore([thunk]);
-const store = mockStore({});
+const store = mockStore({ moviesReducer: initialState });
 const mockItem = dummyList.movies[0];
 
 test("SearchList page should work properly", () => {

@@ -5,9 +5,10 @@ import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import MovieHome from "../componets/MovieHome";
 import thunk from "redux-thunk";
+import { initialState } from "../reducers/moviesReducer";
 
 const mockStore = configureMockStore([thunk]);
-const store = mockStore({ moviesReducer: { movies: [], filter: [], isFilter: false } });
+const store = mockStore({ moviesReducer: initialState });
 
 test("MoviesHome page should open properly", () => {
   const component = renderer.create(

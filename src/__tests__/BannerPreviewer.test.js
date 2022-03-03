@@ -5,9 +5,10 @@ import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import BannerPreviewer from "../componets/BannerPreviewer";
 import { dummyList } from "../moviesList";
+import { initialState } from "../reducers/moviesReducer";
 
 const mockStore = configureMockStore();
-const store = mockStore({});
+const store = mockStore({ moviesReducer: initialState });
 const mockItem = dummyList.movies[0];
 
 test("Open modal when click on banner", () => {
